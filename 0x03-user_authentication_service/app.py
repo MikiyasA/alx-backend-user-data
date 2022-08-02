@@ -7,12 +7,12 @@ from auth import Auth
 app = Flask(__name__)
 AUTH = Auth()
 
+
 @app.route('/', methods=['GET'], strict_slashes=False)
 def welcome():
     """ Flask app that has a single GET route ("/") and use
     flask.jsonify to return a JSON payload of the form: """
     return jsonify({"message": "Bienvenue"})
-
 
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
@@ -81,7 +81,7 @@ def update_password():
     try:
         AUTH.update_password(token, password)
     except Exception:
-        abort(403)        
+        abort(403)
     return jsonify({"email": email, "message": "Password updated"}), 200
 
 
